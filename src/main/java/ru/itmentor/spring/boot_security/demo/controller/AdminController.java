@@ -1,4 +1,5 @@
 package ru.itmentor.spring.boot_security.demo.controller;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -6,19 +7,22 @@ import org.springframework.web.bind.annotation.*;
 import ru.itmentor.spring.boot_security.demo.model.Role;
 import ru.itmentor.spring.boot_security.demo.model.User;
 import ru.itmentor.spring.boot_security.demo.service.UserService;
+
 import java.util.List;
 import java.util.Set;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
     private final UserService userService;
+
     public AdminController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/admin")
-    public String getAllUsers(ModelMap model){
+    @GetMapping
+    public String getAllUsers(ModelMap model) {
         List<User> users = userService.getUsers();
         Set<Role> roles = userService.getRoles();
         model.addAttribute("roles", roles);

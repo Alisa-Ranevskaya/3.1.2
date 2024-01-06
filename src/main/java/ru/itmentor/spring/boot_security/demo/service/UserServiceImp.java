@@ -50,7 +50,7 @@ public class UserServiceImp implements UserService, UserDetailsService {
         return userDao.getRoles();
     }
 
-    @Transactional
+
     @Override
     public Set<Role> getRole(Set<String> rolesId) {
         Set<Role> roles = new HashSet<>();

@@ -29,10 +29,7 @@ public class User implements UserDetails {
     @Column(name = "login")
     private String login;
 
-    @ManyToMany
-    @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @OneToMany(mappedBy = "user")
     private Set<Role> roles;
 
     public Long getId() {
